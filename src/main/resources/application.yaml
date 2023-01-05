@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        messageConsumer-in-0:
+          group: message-group
+          destination: Message-Topic
+          consumer:
+            max-attempts: 1
+            partitioned: true
+      kafka:
+        binder:
+          brokers: localhost
+          auto-add-partitions: true
+          auto-alter-partitions: true
+        default:
+          producer:
+            topic:
+              replication-factor: 1
